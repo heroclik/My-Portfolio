@@ -21,6 +21,10 @@ app.use("/auth", AuthRoute)
 const UserRoute = require('./routes/user.routes.js');
 app.use("/user", UserRoute)
 
+//Project route
+const ProjectRoute = require('./routes/project.routes.js');
+app.use("/project", ProjectRoute)
+
 
 app.listen(port, () => {
   console.log(`Server is Running On Port ${port}`)
