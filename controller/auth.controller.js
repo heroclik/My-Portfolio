@@ -20,9 +20,7 @@ async function register(req, res) {
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ message: 'Internal server error' });
-    } finally {
-        client.end();
     }
-}client.connect();
+}
 
 module.exports = { register };

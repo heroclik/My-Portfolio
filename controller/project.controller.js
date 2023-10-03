@@ -1,6 +1,6 @@
 const client = require('../configs/databasepg.js');
 
-// Get all users
+// get all project
 async function getallproject(req, res) {
     try {
         const result = await client.query(`SELECT * FROM projects`);
@@ -11,7 +11,7 @@ async function getallproject(req, res) {
     }
 }
 
-// Get users by id
+// get project by id
 async function getprojectById(req, res) {
     try {
         const result = await client.query(`Select * from projects where project_id=${req.params.project_id}`);
@@ -22,8 +22,23 @@ async function getprojectById(req, res) {
     }
 }
 
-// update users by id
+//create new project
+async function newproject(req, res) {
+    const project = req.body;
+
+        let insertQuery = `insert into projects(project_name, description, owner_id) 
+                            VALUES ($1, $2, $3)
+                            RETURNING project_id`;
+        const values = [project.project_name, project.description, project.owner_id];
+    try {
+        const result = await client.query(insertQuery, values);
+        const projectId = result.rows[0].project_id;
+        res.status(201).json({ message: 'Insertion was successful', projectId });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
 
 
-
-module.exports = { getallproject, getprojectById};
+module.exports = { getallproject, getprojectById, newproject};

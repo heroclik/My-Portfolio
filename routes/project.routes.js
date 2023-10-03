@@ -8,4 +8,8 @@ router.get('/getproject', projectController.getallproject);
 // get project by id
 router.get('/getproject/:project_id', projectController.getprojectById);
 
+//create new project
+router.post('/newproject', projectController.newproject);
+
+
 module.exports = router;

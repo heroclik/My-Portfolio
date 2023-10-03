@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const port = 3000
-
+const client = require('./configs/databasepg.js');
 
 app.use(cors());
 app.use(express.json());
@@ -29,3 +29,5 @@ app.use("/project", ProjectRoute)
 app.listen(port, () => {
   console.log(`Server is Running On Port ${port}`)
 })
+
+client.connect();
