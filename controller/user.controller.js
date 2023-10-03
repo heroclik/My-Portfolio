@@ -22,5 +22,8 @@ async function getUserById(req, res) {
     }
 }
 
+// update users by id
 
-module.exports = { getallusers, getUserById };
+
+
+module.exports = { getallusers, getUserById};

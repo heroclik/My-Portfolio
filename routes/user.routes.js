@@ -5,8 +5,10 @@ const userController = require('../controller/user.controller.js');
 // get all users
 router.get('/getall', userController.getallusers);
 
-// get all users
+// get users by id
 router.get('/getuser/:user_id', userController.getUserById);
 
+// update user
+// router.put('/update/:user_id', userController.updateById);
 
 module.exports = router;
