@@ -12,6 +12,7 @@ async function getallproject(req, res) {
 }
 
 // get project by id
+//เห็นแค่คนในทีม
 async function getprojectById(req, res) {
     try {
         const result = await client.query(`Select projects.project_id, projects.project_name, projects.description, projects.created_at, users.username from projects left join users ON projects.owner_id = users.user_id where project_id=${req.params.project_id}`);
